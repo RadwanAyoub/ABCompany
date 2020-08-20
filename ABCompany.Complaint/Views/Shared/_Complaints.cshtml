@@ -1,0 +1,54 @@
+﻿@model ABCompany.Complaint.ViewModels.ComplaintViewModel
+
+<!-- Complaint section -->
+<div class="section about_section layout_padding padding_top_0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="full">
+                    <div class="heading_main text_align_center margin-bottom_30">
+                        <h2>
+                            <strong class="small theme_color">@Model.Title</strong>
+                            <br>
+                            Our Case Studies
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-10 offset-lg-1">
+                <div class="full text_align_center">
+                    <p>
+                        @Model.Description
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var complaint in Model.Complaints)
+            {
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                    <div class="full feature_box">
+                        <div class="full icon">
+                            <img class="default-block" src="content/images/icon_2.png" alt="#" />
+                            <img class="default-none" src="content/images/icon_2w.png" alt="#" />
+                        </div>
+                        <div class="full">
+                            <h4>@complaint.Title</h4>
+                        </div>
+                        <div class="full">
+                            <p>
+                                @complaint.Description
+                            </p>
+                        </div>
+                        <div class="full">
+                            <p>
+                                @complaint.State
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- end Complaint section -->

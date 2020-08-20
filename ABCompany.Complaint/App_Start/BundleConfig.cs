@@ -11,7 +11,6 @@ namespace ABCompany.Complaint
             //All JS
             //All Plugins
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js",
                         "~/Scripts/js/jquery.min.js",
                         "~/Scripts/js/popper.min.js",
                         "~/Scripts/js/jquery.magnific-popup.min.js",

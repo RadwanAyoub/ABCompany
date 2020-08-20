@@ -1,4 +1,4 @@
-﻿using ABCompany.Complaint.Mediator;
+﻿using ABCompany.Complaint.Mediators;
 using System.Web.Mvc;
 
 namespace ABCompany.Complaint.Controllers
@@ -14,8 +14,8 @@ namespace ABCompany.Complaint.Controllers
 
         public ActionResult Index()
         {
-            var complaints = _mediatorComplaint.GetComplaints();
-            return View();
+            var indexView = _mediatorComplaint.GetIndex();
+            return View(indexView);
         }
     }
 }
