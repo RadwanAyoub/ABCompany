@@ -76,3 +76,4 @@ C:\Projects\ABCompany\ABCompany.Complaint\obj\Debug\ABCompany.Complaint.csproj.C
 C:\Projects\ABCompany\ABCompany.Complaint\obj\Debug\ABCompany.Complaint.csproj.CopyComplete
 C:\Projects\ABCompany\ABCompany.Complaint\obj\Debug\ABCompany.Complaint.dll
 C:\Projects\ABCompany\ABCompany.Complaint\obj\Debug\ABCompany.Complaint.pdb
+C:\Projects\ABCompany\ABCompany.Complaint\obj\Debug\ABCompany.Complaint.csprojAssemblyReference.cache
