@@ -1,4 +1,5 @@
-.suo
+*.suo
 node_modules/
 logs/
 **/obj/
+v16/

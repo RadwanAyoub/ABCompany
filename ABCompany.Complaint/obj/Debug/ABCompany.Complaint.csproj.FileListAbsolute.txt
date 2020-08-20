@@ -81,3 +81,12 @@ C:\Projects\ABCompany\ABCompany.Complaint\bin\EntityFramework.dll
 C:\Projects\ABCompany\ABCompany.Complaint\bin\EntityFramework.SqlServer.dll
 C:\Projects\ABCompany\ABCompany.Complaint\bin\EntityFramework.xml
 C:\Projects\ABCompany\ABCompany.Complaint\bin\EntityFramework.SqlServer.xml
+C:\Projects\ABCompany\ABCompany.Complaint\bin\ABCompany.DataModel.dll
+C:\Projects\ABCompany\ABCompany.Complaint\bin\ABCompany.DataModel.pdb
+C:\Projects\ABCompany\ABCompany.Complaint\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Projects\ABCompany\ABCompany.Complaint\bin\Unity.Abstractions.dll
+C:\Projects\ABCompany\ABCompany.Complaint\bin\Unity.Container.dll
+C:\Projects\ABCompany\ABCompany.Complaint\bin\Unity.Mvc5.dll
+C:\Projects\ABCompany\ABCompany.Complaint\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Projects\ABCompany\ABCompany.Complaint\bin\Unity.Abstractions.pdb
+C:\Projects\ABCompany\ABCompany.Complaint\bin\Unity.Container.pdb

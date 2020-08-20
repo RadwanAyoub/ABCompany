@@ -52,21 +52,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ABCompanyContext.cs" />
+    <Compile Include="Enum\Workflow.cs" />
     <Compile Include="Migrations\202008201849324_InitialComlaintMigration.cs" />
     <Compile Include="Migrations\202008201849324_InitialComlaintMigration.designer.cs">
       <DependentUpon>202008201849324_InitialComlaintMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Complaint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ABCompany.Complaint\ABCompany.Complaint.csproj">
-      <Project>{96C5D56D-B093-496F-B80B-A216A146EE05}</Project>
-      <Name>ABCompany.Complaint</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202008201849324_InitialComlaintMigration.resx">

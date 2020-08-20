@@ -1,29 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using ABCompany.Complaint.Mediator;
 using System.Web.Mvc;
 
 namespace ABCompany.Complaint.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IComplaintMediator _mediatorComplaint;
+
+        public HomeController(IComplaintMediator mediatorComplaint)
+        {
+            _mediatorComplaint = mediatorComplaint;
+        }
+
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
+            var complaints = _mediatorComplaint.GetComplaints();
             return View();
         }
     }
