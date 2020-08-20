@@ -3,3 +3,4 @@ node_modules/
 logs/
 **/obj/
 v16/
+/.vs/ABCompany/v16/.suo
