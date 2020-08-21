@@ -7,6 +7,11 @@
                     <a href="@Url.Action("Index", "Home")" style="color:red; font-weight:600 !important; font-size:larger !important;">
                         ABCompany
                     </a>
+                    @if (Session["FirstName"] != null)
+                    {
+                        <span> - @(Session["FirstName"]?.ToString()) - </span>
+                        <a href="@Url.Action("Logout","Users")" class="btn btn-warning">Logout</a>
+                    }
                 </div>
             </div>
             <div class="col-sm-6">

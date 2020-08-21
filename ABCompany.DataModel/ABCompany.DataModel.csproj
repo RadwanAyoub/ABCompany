@@ -57,8 +57,21 @@
     <Compile Include="Migrations\202008201849324_InitialComlaintMigration.designer.cs">
       <DependentUpon>202008201849324_InitialComlaintMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202008211550087_AddUsersTable.cs" />
+    <Compile Include="Migrations\202008211550087_AddUsersTable.designer.cs">
+      <DependentUpon>202008211550087_AddUsersTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008211707349_UpdateUserModel.cs" />
+    <Compile Include="Migrations\202008211707349_UpdateUserModel.designer.cs">
+      <DependentUpon>202008211707349_UpdateUserModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008211752114_UpdateUserModel2.cs" />
+    <Compile Include="Migrations\202008211752114_UpdateUserModel2.designer.cs">
+      <DependentUpon>202008211752114_UpdateUserModel2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Complaint.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +80,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202008201849324_InitialComlaintMigration.resx">
       <DependentUpon>202008201849324_InitialComlaintMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008211550087_AddUsersTable.resx">
+      <DependentUpon>202008211550087_AddUsersTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008211707349_UpdateUserModel.resx">
+      <DependentUpon>202008211707349_UpdateUserModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008211752114_UpdateUserModel2.resx">
+      <DependentUpon>202008211752114_UpdateUserModel2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

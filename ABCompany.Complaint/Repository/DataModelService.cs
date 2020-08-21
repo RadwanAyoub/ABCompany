@@ -1,5 +1,6 @@
 ﻿using ABCompany.Complaint.Enum;
 using ABCompany.DataModel;
+using ABCompany.DataModel.Models;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
@@ -14,7 +15,6 @@ namespace ABCompany.Complaint.Repository
             {
                 context.Complaints.Add(complaint);
             }
-            SaveChanges();
         }
 
         public void UpdateComplaint(DataModel.Models.Complaint complaint)
@@ -22,15 +22,6 @@ namespace ABCompany.Complaint.Repository
             using (ABCompanyContext context = new ABCompanyContext())
             {
                 context.Complaints.AddOrUpdate(complaint);
-            }
-            SaveChanges();
-        }
-
-        public void SaveChanges()
-        {
-            using (ABCompanyContext context = new ABCompanyContext())
-            {
-                context.SaveChanges();
             }
         }
 
@@ -70,6 +61,40 @@ namespace ABCompany.Complaint.Repository
             {
                 return context.Complaints
                     .ToList();
+            }
+        }
+
+        public List<User> GetUsers()
+        {
+            using (ABCompanyContext context = new ABCompanyContext())
+            {
+                return context.Users
+                    .ToList();
+            }
+        }
+
+        public User GetUsersById()
+        {
+            using (ABCompanyContext context = new ABCompanyContext())
+            {
+                return context.Users
+                    .FirstOrDefault();
+            }
+        }
+
+        public void AddUser(User user)
+        {
+            using (ABCompanyContext context = new ABCompanyContext())
+            {
+                context.Users.Add(user);
+            }
+        }
+
+        public void SaveChanges()
+        {
+            using (ABCompanyContext context = new ABCompanyContext())
+            {
+                context.SaveChanges();
             }
         }
     }
