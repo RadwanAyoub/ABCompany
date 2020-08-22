@@ -1,4 +1,4 @@
-﻿using ABCompany.Complaint.Enum;
+﻿using ABCompany.DataModel.Enum;
 using ABCompany.DataModel;
 using ABCompany.DataModel.Models;
 using System.Collections.Generic;

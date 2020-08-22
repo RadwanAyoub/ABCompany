@@ -9,8 +9,7 @@
                     </a>
                     @if (Session["FirstName"] != null)
                     {
-                        <span> - @(Session["FirstName"]?.ToString()) - </span>
-                        <a href="@Url.Action("Logout","Users")" class="btn btn-warning">Logout</a>
+                        <span> - @(Session["FirstName"]?.ToString())</span>
                     }
                 </div>
             </div>

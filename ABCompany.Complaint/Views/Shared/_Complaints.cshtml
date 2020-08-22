@@ -45,13 +45,12 @@
                                 @complaint.State
                             </p>
                         </div>
-                        @if (Session["FirstName"] != null && Session["Email"].ToString() == "email@abc.com")
+                        @if (Session["Email"] != null && Session["Email"].ToString() == "email@abc.com")
                         {
                             <div class="full">
                                 <p>
-                                    @Html.ActionLink("Edit", "Edit", "Admin", new { id = complaint.Id }) |
-                                    @Html.ActionLink("Details", "Details", "Admin", new { id = complaint.Id }) |
-                                    @Html.ActionLink("Delete", "Delete", "Admin", new { id = complaint.Id })
+                                    @Html.ActionLink("Edit", "Edit", new { id = complaint.Id }) |
+                                    @Html.ActionLink("Details", "Details", new { id = complaint.Id })
                                 </p>
                             </div>
                         }

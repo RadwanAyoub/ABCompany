@@ -144,7 +144,6 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Enum\Workflow.cs" />
     <Compile Include="Factories\AdminFactory.cs" />
     <Compile Include="Factories\ComplaintFactory.cs" />
     <Compile Include="Factories\IAdminFactory.cs" />
@@ -154,8 +153,6 @@
     </Compile>
     <Compile Include="Mediators\AdminMediator.cs" />
     <Compile Include="Mediators\IAdminMediator.cs" />
-    <Compile Include="Mediators\IUserMediator.cs" />
-    <Compile Include="Mediators\UserMediator.cs" />
     <Compile Include="Mediators\ComplaintMediator.cs" />
     <Compile Include="Mediators\IComplaintMediator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

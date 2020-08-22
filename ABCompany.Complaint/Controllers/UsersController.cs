@@ -17,7 +17,10 @@ namespace ABCompany.Complaint.Controllers
             _complaintMediator = complaintMediator;
         }
 
-        // GET: User
+        /// <summary>
+        /// User page
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
             string id = string.Empty;
@@ -31,13 +34,20 @@ namespace ABCompany.Complaint.Controllers
             return View(model);
         }
 
-        // GET: Users/Create
+        /// <summary>
+        /// Create complaint page
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Users/Create
+        /// <summary>
+        /// Create submit action
+        /// </summary>
+        /// <param name="complaint"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(DataModel.Models.Complaint complaint)
@@ -155,7 +165,7 @@ namespace ABCompany.Complaint.Controllers
 
                         if (data.Email == "email@abc.com") return Redirect("/admin");
 
-                        return Redirect(string.Format("{0}{1}", "/Users/Index/", Session["idUser"].ToString()));
+                        return RedirectToAction("Index");
                     }
                     else
                     {

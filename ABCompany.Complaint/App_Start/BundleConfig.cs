@@ -22,9 +22,6 @@ namespace ABCompany.Complaint
                         "~/Scripts/js/custom.js",
                         "~/Scripts/js/slider-index.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.validate*"));
-
             //Bootstrap JS
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/js/bootstrap.min.js"));

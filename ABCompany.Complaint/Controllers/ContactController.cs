@@ -8,7 +8,10 @@ namespace ABCompany.Complaint.Controllers
 {
     public class ContactController : Controller
     {
-        // GET: Contact
+        /// <summary>
+        /// Contact page
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
             return View();

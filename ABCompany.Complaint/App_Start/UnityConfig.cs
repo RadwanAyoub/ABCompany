@@ -7,6 +7,9 @@ using Unity.Mvc5;
 
 namespace ABCompany.Complaint
 {
+    /// <summary>
+    /// Unity package to handle DI - services and containers
+    /// </summary>
     public static class UnityConfig
     {
         public static void RegisterComponents()
@@ -14,13 +17,9 @@ namespace ABCompany.Complaint
 			var container = new UnityContainer();
 
             // register all your components with the container here
-            // it is NOT necessary to register your controllers
-
-            // e.g. container.RegisterType<ITestService, TestService>();
             container.RegisterType<IComplaintMediator, ComplaintMediator>();
             container.RegisterType<IDataModelService, DataModelService>();
             container.RegisterType<IComplaintFactory, ComplaintFactory>();
-            container.RegisterType<IUserMediator, UserMediator>();
             container.RegisterType<IAdminMediator, AdminMediator>();
             container.RegisterType<IAdminFactory, AdminFactory>();
 
