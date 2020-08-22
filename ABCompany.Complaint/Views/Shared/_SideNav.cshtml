@@ -6,8 +6,15 @@
             <li><a href="@Url.Action("Index", "Contact")">Contact us</a></li>
             <br />
             <br />
-            <li><a href="@Url.Action("Login", "Users")">Login</a></li>
-            <li><a href="@Url.Action("Register", "Users")">Register</a></li>
+            @if (Session["idUser"] != null)
+            {
+                <li><a href="@Url.Action("Logout", "Users")">Logout</a></li>
+            }
+            else
+            {
+                <li><a href="@Url.Action("Login", "Users")">Login</a></li>
+                <li><a href="@Url.Action("Register", "Users")">Register</a></li>
+            }
         </ul>
     </div>
 </nav>

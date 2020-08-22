@@ -24,5 +24,11 @@ namespace ABCompany.Complaint.Mediators
             var complaints = _dataModelServiceInterface.GetComplaints();
             return _complaintFactory.GenerateIndexViewModel(complaints);
         }
+
+        public UserViewModel GetUserModel(string id)
+        {
+            var complaints = _dataModelServiceInterface.GetComplaints();
+            return _complaintFactory.GenerateUserViewModel(complaints, id);
+        }
     }
 }

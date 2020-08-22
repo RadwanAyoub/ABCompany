@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Data.Entity;
 using System.Linq;
-using System.Net;
 using System.Web.Mvc;
+using ABCompany.Complaint.Mediators;
 using ABCompany.DataModel;
 using ABCompany.DataModel.Models;
 
@@ -11,26 +10,25 @@ namespace ABCompany.Complaint.Controllers
     public class UsersController : Controller
     {
         private ABCompanyContext db = new ABCompanyContext();
+        private readonly IComplaintMediator _complaintMediator;
 
-        // GET: Users
-        public ActionResult Index()
+        public UsersController(IComplaintMediator complaintMediator)
         {
-            return View(db.Users.ToList());
+            _complaintMediator = complaintMediator;
         }
 
-        // GET: Users/Details/5
-        public ActionResult Details(int? id)
+        // GET: User
+        public ActionResult Index()
         {
-            if (id == null)
+            string id = string.Empty;
+            if (Session["idUser"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                id = Session["idUser"].ToString();
             }
-            User user = db.Users.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
+
+            var model = _complaintMediator.GetUserModel(id);
+
+            return View(model);
         }
 
         // GET: Users/Create
@@ -40,84 +38,36 @@ namespace ABCompany.Complaint.Controllers
         }
 
         // POST: Users/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,Email,Password")] User user)
+        public ActionResult Create(DataModel.Models.Complaint complaint)
         {
+            complaint.Date = DateTime.Today;
+            complaint.State = DataModel.Enum.WorkflowState.Pending;
             if (ModelState.IsValid)
             {
-                db.Users.Add(user);
+                var userId = Session["idUser"]?.ToString();
+                if (!string.IsNullOrEmpty(userId))
+                    complaint.User = int.Parse(userId);
+                else
+                {
+                    ViewBag.error = "Failed to create new complaint";
+                    return RedirectToAction("Create");
+                }
+
+                db.Complaints.Add(complaint);
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 
-            return View(user);
-        }
-
-        // GET: Users/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            User user = db.Users.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
-        }
-
-        // POST: Users/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,FirstName,LastName,Email,Password")] User user)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(user).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(user);
-        }
-
-        // GET: Users/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            User user = db.Users.Find(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
-        }
-
-        // POST: Users/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            User user = db.Users.Find(id);
-            db.Users.Remove(user);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Create");
         }
 
         /// <summary>
         /// Registration view
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
         public ActionResult Register()
         {
             return View();
@@ -140,9 +90,16 @@ namespace ABCompany.Complaint.Controllers
                     {
                         db.Users.Add(user);
                         db.SaveChanges();
-                        //add session
+
+                        var data = db.Users.Where(e => e.Email == user.Email).FirstOrDefault();
+                        if (data != null)
+                        {
+                            Session["idUser"] = data.Id;
+                        }
+
                         Session["FirstName"] = user.FirstName;
                         Session["Email"] = user.Email;
+
                         return Redirect("/");
                     }
                     catch (Exception ex)
@@ -169,7 +126,6 @@ namespace ABCompany.Complaint.Controllers
         /// Login view
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
         public ActionResult Login()
         {
             return View();
@@ -199,7 +155,7 @@ namespace ABCompany.Complaint.Controllers
 
                         if (data.Email == "email@abc.com") return Redirect("/admin");
 
-                        return Redirect("/");
+                        return Redirect(string.Format("{0}{1}", "/Users/Index/", Session["idUser"].ToString()));
                     }
                     else
                     {
