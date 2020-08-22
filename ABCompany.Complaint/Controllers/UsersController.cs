@@ -11,10 +11,12 @@ namespace ABCompany.Complaint.Controllers
     {
         private ABCompanyContext db = new ABCompanyContext();
         private readonly IComplaintMediator _complaintMediator;
+        private readonly IDataContext _dataContext;
 
-        public UsersController(IComplaintMediator complaintMediator)
+        public UsersController(IComplaintMediator complaintMediator, IDataContext dataContext)
         {
             _complaintMediator = complaintMediator;
+            _dataContext = dataContext;
         }
 
         /// <summary>
@@ -65,8 +67,8 @@ namespace ABCompany.Complaint.Controllers
                     return RedirectToAction("Create");
                 }
 
-                db.Complaints.Add(complaint);
-                db.SaveChanges();
+                _dataContext.GetComplaints().Add(complaint);
+                _dataContext.GetDbContext().SaveChanges();
 
                 return RedirectToAction("Index");
             }
@@ -93,15 +95,15 @@ namespace ABCompany.Complaint.Controllers
         {
             if (ModelState.IsValid)
             {
-                var check = db.Users.FirstOrDefault(s => s.Email == user.Email);
+                var check = _dataContext.GetUsers().FirstOrDefault(s => s.Email == user.Email);
                 if (check == null)
                 {
                     try
                     {
-                        db.Users.Add(user);
-                        db.SaveChanges();
+                        _dataContext.GetUsers().Add(user);
+                        _dataContext.GetDbContext().SaveChanges();
 
-                        var data = db.Users.Where(e => e.Email == user.Email).FirstOrDefault();
+                        var data = _dataContext.GetUsers().Where(e => e.Email == user.Email).FirstOrDefault();
                         if (data != null)
                         {
                             Session["idUser"] = data.Id;
@@ -153,8 +155,7 @@ namespace ABCompany.Complaint.Controllers
             {
                 try
                 {
-                    var data1 = db.Users.ToList();
-                    var data = db.Users
+                    var data = _dataContext.GetUsers()
                         .FirstOrDefault(s => s.Email.Equals(Email) && s.Password == Password);
                     if (data != null)
                     {
@@ -200,7 +201,7 @@ namespace ABCompany.Complaint.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _dataContext.GetDbContext().Dispose();
             }
             base.Dispose(disposing);
         }

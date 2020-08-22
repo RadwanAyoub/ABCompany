@@ -53,9 +53,14 @@
   <ItemGroup>
     <Compile Include="ABCompanyContext.cs" />
     <Compile Include="Enum\Workflow.cs" />
+    <Compile Include="IDataContext.cs" />
     <Compile Include="Migrations\202008221327118_init.cs" />
     <Compile Include="Migrations\202008221327118_init.designer.cs">
       <DependentUpon>202008221327118_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202008221603092_updateUser.cs" />
+    <Compile Include="Migrations\202008221603092_updateUser.designer.cs">
+      <DependentUpon>202008221603092_updateUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Complaint.cs" />
@@ -68,6 +73,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202008221327118_init.resx">
       <DependentUpon>202008221327118_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202008221603092_updateUser.resx">
+      <DependentUpon>202008221603092_updateUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

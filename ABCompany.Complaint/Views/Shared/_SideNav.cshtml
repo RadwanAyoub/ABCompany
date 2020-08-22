@@ -8,7 +8,7 @@
             <br />
             @if (Session["idUser"] != null)
             {
-                <li><a href="@Url.Action("Logout", "Users")">Logout</a></li>
+                <li><a href="@Url.Action("Index", "Users")">Profile</a> - <a href="@Url.Action("Logout", "Users")">Logout</a></li>
             }
             else
             {

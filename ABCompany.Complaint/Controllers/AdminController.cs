@@ -11,13 +11,13 @@ namespace ABCompany.Complaint.Controllers
 {
     public class AdminController : Controller
     {
-        private ABCompanyContext db = new ABCompanyContext();
+        private readonly IDataContext _dataContext;
+        private readonly IAdminMediator _adminMediator;
 
-        private IAdminMediator _adminMediator { get; }
-
-        public AdminController(IAdminMediator adminMediator)
+        public AdminController(IAdminMediator adminMediator, IDataContext dataContext)
         {
             _adminMediator = adminMediator;
+            _dataContext = dataContext;
         }
 
         /// <summary>
@@ -29,7 +29,7 @@ namespace ABCompany.Complaint.Controllers
             var model = _adminMediator.HandleAdminPage();
             return View(model);
         }
-       
+
         /// <summary>
         /// Show complaint details
         /// </summary>
@@ -41,7 +41,7 @@ namespace ABCompany.Complaint.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DataModel.Models.Complaint complaint = db.Complaints.Find(id);
+            DataModel.Models.Complaint complaint = _dataContext.GetComplaints().FirstOrDefault(e => e.Id == id);
             if (complaint == null)
             {
                 return HttpNotFound();
@@ -60,7 +60,7 @@ namespace ABCompany.Complaint.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DataModel.Models.Complaint complaint = db.Complaints.Find(id);
+            DataModel.Models.Complaint complaint = _dataContext.GetComplaints().FirstOrDefault(e => e.Id == id);
             if (complaint == null)
             {
                 return HttpNotFound();
@@ -79,8 +79,8 @@ namespace ABCompany.Complaint.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(complaint).State = EntityState.Modified;
-                db.SaveChanges();
+                _dataContext.GetDbContext().Entry(complaint).State = EntityState.Modified;
+                _dataContext.GetDbContext().SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(complaint);
@@ -90,7 +90,7 @@ namespace ABCompany.Complaint.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _dataContext.GetDbContext().Dispose();
             }
             base.Dispose(disposing);
         }

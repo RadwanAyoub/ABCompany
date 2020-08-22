@@ -1,6 +1,7 @@
 using ABCompany.Complaint.Factories;
 using ABCompany.Complaint.Mediators;
 using ABCompany.Complaint.Repository;
+using ABCompany.DataModel;
 using System.Web.Mvc;
 using Unity;
 using Unity.Mvc5;
@@ -22,6 +23,7 @@ namespace ABCompany.Complaint
             container.RegisterType<IComplaintFactory, ComplaintFactory>();
             container.RegisterType<IAdminMediator, AdminMediator>();
             container.RegisterType<IAdminFactory, AdminFactory>();
+            container.RegisterType<IDataContext, ABCompanyContext>();
 
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }

@@ -4,3 +4,5 @@ logs/
 **/obj/
 v16/
 /.vs/ABCompany/v16/.suo
+/ABCompany.Complaint/App_Data/ABCompany.DataModel.ABCompanyContext.mdf
+/ABCompany.Complaint/App_Data/ABCompany.DataModel.ABCompanyContext_log.ldf
